@@ -1,0 +1,16 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Celadon logo — light</title>
+<desc>Provisional draft. Deeper crackle-glaze tile on the celadon sky light base.</desc>
+<defs><clipPath id="gl"><rect x="53" y="53" width="150" height="150" rx="30"/></clipPath></defs>
+<rect x="8" y="8" width="240" height="240" rx="52" fill="#eaf6e8" stroke="#cee1ca" stroke-width="1.5"/>
+<rect x="53" y="53" width="150" height="150" rx="30" fill="#5f8a54"/>
+<g clip-path="url(#gl)" fill="none" stroke="#24401c" stroke-width="1.5" stroke-linecap="round" opacity="0.85">
+<path d="M128 53 L118 98 L143 132 L133 203"/>
+<path d="M53 118 L118 98 L203 116"/>
+<path d="M118 98 L88 68"/>
+<path d="M118 98 L96 152"/>
+<path d="M143 132 L185 145"/>
+<path d="M143 132 L152 203"/>
+<path d="M96 152 L68 175"/>
+</g>
+</svg>

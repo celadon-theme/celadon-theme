@@ -1,0 +1,39 @@
+name: Bug report
+description: A color looks wrong, a port misbehaves, or something doesn't match the docs.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: variant
+    attributes:
+      label: Variant
+      description: Which Celadon variant were you using?
+      options:
+        - celadon (dark, medium — default)
+        - celadon sky (light)
+        - celadon powder (dark, low contrast)
+        - celadon jade (dark, high contrast)
+        - all / not variant-specific
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: App / port
+      description: Where did you see it? Include the version.
+      placeholder: e.g. Ghostty 1.1.0, iTerm2 3.5
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong?
+      description: >-
+        What did you expect, and what did you see instead? Screenshots help
+        enormously for color issues.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Environment
+      description: OS, display setup, anything else relevant (e.g. Night Shift / f.lux active).

@@ -1,0 +1,39 @@
+name: Port request
+description: Request Celadon for an app that doesn't have a port yet.
+labels: ["port-request"]
+body:
+  - type: input
+    id: app
+    attributes:
+      label: App
+      description: What should Celadon be ported to?
+      placeholder: e.g. Alacritty, Zed, bat
+    validations:
+      required: true
+  - type: input
+    id: format
+    attributes:
+      label: Theme format
+      description: >-
+        How does this app define themes? A link to its theming docs is ideal.
+      placeholder: e.g. TOML file in ~/.config/alacritty/themes/
+  - type: dropdown
+    id: install
+    attributes:
+      label: How do users install themes for it?
+      description: >-
+        Flat files live in this repo under ports/; ports installed by a plugin
+        manager from a repo root get their own repo under the org.
+      options:
+        - Copy / curl a config file (flat file)
+        - Plugin manager installs a repo (e.g. lazy.nvim, tpm)
+        - Marketplace / extension store
+        - Not sure
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to build this port myself

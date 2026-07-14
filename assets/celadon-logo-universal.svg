@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Celadon logo — universal</title>
+<desc>Provisional draft. The glaze crackle tile alone, no backing — works on any background.</desc>
+<defs><clipPath id="gu"><rect x="12" y="12" width="232" height="232" rx="48"/></clipPath></defs>
+<rect x="12" y="12" width="232" height="232" rx="48" fill="#8caf83" stroke="#5f7f56" stroke-width="2"/>
+<g clip-path="url(#gu)" fill="none" stroke="#26311d" stroke-width="2" stroke-linecap="round" opacity="0.85">
+<path d="M128 12 L112 84 L152 132 L138 244"/>
+<path d="M12 108 L112 84 L244 100"/>
+<path d="M112 84 L70 40"/>
+<path d="M112 84 L80 160"/>
+<path d="M152 132 L214 150"/>
+<path d="M152 132 L164 244"/>
+<path d="M80 160 L44 190"/>
+</g>
+</svg>
