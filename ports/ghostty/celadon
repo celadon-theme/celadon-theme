@@ -1,0 +1,24 @@
+# celadon · calm green. honest color.
+# https://github.com/celadon-theme/celadon-theme — generated, do not edit
+palette = 0=#232f20
+palette = 1=#fba29b
+palette = 2=#9ecf75
+palette = 3=#dcbb50
+palette = 4=#7cc7fb
+palette = 5=#f49cdb
+palette = 6=#37d8c9
+palette = 7=#c9d5c6
+palette = 8=#727e70
+palette = 9=#fec4be
+palette = 10=#b6e68f
+palette = 11=#f1d26f
+palette = 12=#abdbfe
+palette = 13=#ffbceb
+palette = 14=#62efdf
+palette = 15=#c9d5c6
+background = #131b11
+foreground = #c9d5c6
+cursor-color = #939f91
+cursor-text = #131b11
+selection-background = #232f20
+selection-foreground = #c9d5c6
