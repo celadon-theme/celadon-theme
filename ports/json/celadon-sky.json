@@ -1,0 +1,25 @@
+{
+  "slug": "celadon-sky",
+  "name": "Celadon Sky",
+  "appearance": "light",
+  "palette": {
+    "base": "#eaf6e8",
+    "surface": "#deedda",
+    "overlay": "#cee1ca",
+    "muted": "#7a8378",
+    "subtle": "#5d675b",
+    "text": "#3b423a",
+    "red": "#9b4a43",
+    "green": "#40783b",
+    "yellow": "#9c7220",
+    "blue": "#246099",
+    "magenta": "#874576",
+    "cyan": "#1c7472",
+    "br_red": "#84312b",
+    "br_green": "#266221",
+    "br_yellow": "#825b00",
+    "br_blue": "#004982",
+    "br_magenta": "#702d60",
+    "br_cyan": "#005c5a"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "celadon",
+  "name": "Celadon",
+  "appearance": "dark",
+  "palette": {
+    "base": "#131b11",
+    "surface": "#182216",
+    "overlay": "#232f20",
+    "muted": "#727e70",
+    "subtle": "#939f91",
+    "text": "#c9d5c6",
+    "red": "#fba29b",
+    "green": "#9ecf75",
+    "yellow": "#dcbb50",
+    "blue": "#7cc7fb",
+    "magenta": "#f49cdb",
+    "cyan": "#37d8c9",
+    "br_red": "#fec4be",
+    "br_green": "#b6e68f",
+    "br_yellow": "#f1d26f",
+    "br_blue": "#abdbfe",
+    "br_magenta": "#ffbceb",
+    "br_cyan": "#62efdf"
+  }
+}
