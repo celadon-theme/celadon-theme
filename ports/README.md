@@ -20,4 +20,9 @@ Ports installed by a plugin manager from a repo root (Neovim, tmux, …)
 live in their own repos under the
 [`celadon-theme`](https://github.com/celadon-theme) org, not here.
 
-Available now: [Ghostty](ghostty/). Next up: iTerm2.
+Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/).
+
+One special directory: [`json/`](json/) is the machine-readable palette
+(slug → role → hex) that the website and tooling consume — not an app port,
+but committed for the same reason: one source of truth, curl-able at a
+stable ref.

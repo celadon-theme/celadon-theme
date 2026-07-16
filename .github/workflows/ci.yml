@@ -1,0 +1,30 @@
+name: gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gates:
+    name: palette gates + drift check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gates — APCA contrast + accent distinctness
+        run: python3 generator/build_celadon.py --check
+
+      - name: CVD audit (informational)
+        run: python3 generator/distinctness.py
+
+      - name: Drift check — committed output matches the generator
+        run: |
+          python3 generator/build_celadon.py --emit
+          python3 generator/swatches.py
+          if [ -n "$(git status --porcelain -- ports assets/palette)" ]; then
+            echo "::error::generated output drifted from the generator — run 'python3 generator/build_celadon.py --emit && python3 generator/swatches.py' and commit the result"
+            git status --porcelain -- ports assets/palette
+            git diff -- ports assets/palette
+            exit 1
+          fi

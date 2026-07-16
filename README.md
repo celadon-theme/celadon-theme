@@ -10,6 +10,11 @@
 
 <p align="center"><em>calm green. honest color.</em></p>
 
+<p align="center">
+  <a href="https://celadontheme.com">celadontheme.com</a> ·
+  <a href="https://github.com/celadon-theme/celadon-theme/actions/workflows/ci.yml"><img src="https://github.com/celadon-theme/celadon-theme/actions/workflows/ci.yml/badge.svg" alt="gates"></a>
+</p>
+
 ---
 
 A sage-green theme family for terminals and editors, named for the pale
@@ -24,22 +29,82 @@ The palettes are **generated, not hand-tuned**: a small set of OKLCH parameters
 and rules, with every build gated on APCA contrast and accent-distinctness
 checks.
 
+<!-- hero screenshots land here: assets/screenshots/<slug>.png, one per
+     variant, same content in each (diff + test output + prompt) -->
+
 ## Variants
 
 One graded family, light → dark: **sky → powder → celadon → jade**.
 
 | variant | field | for |
 |---|---|---|
-| `celadon sky` | light · sage paper | daytime |
-| `celadon powder` | dark · low contrast | night, dim rooms |
+| `celadon-sky` | light · sage paper | daytime |
+| `celadon-powder` | dark · low contrast | night, dim rooms |
 | `celadon` | dark · medium contrast | **the default** |
-| `celadon jade` | dark · high contrast | bright rooms, glare |
+| `celadon-jade` | dark · high contrast | bright rooms, glare |
 
-## Status
+## Install
 
-🚧 **Early days.** The palette is in final validation; first ports (Ghostty,
-iTerm2) land here, with Neovim and friends to follow in their own repos under
-this org.
+Every port ships all four variants as plain files — copy or curl, nothing to
+install.
+
+### Ghostty
+
+```sh
+mkdir -p ~/.config/ghostty/themes
+curl -o ~/.config/ghostty/themes/celadon \
+  https://raw.githubusercontent.com/celadon-theme/celadon-theme/main/ports/ghostty/celadon
+```
+
+Then in `~/.config/ghostty/config`:
+
+```
+theme = celadon
+```
+
+More, including following the system appearance: [ports/ghostty](ports/ghostty/).
+
+### iTerm2
+
+```sh
+curl -O https://raw.githubusercontent.com/celadon-theme/celadon-theme/main/ports/iterm2/celadon.itermcolors
+open celadon.itermcolors
+```
+
+Then **Settings → Profiles → Colors → Color Presets… → celadon**.
+Details: [ports/iterm2](ports/iterm2/).
+
+### Something else?
+
+[Request a port](../../issues/new/choose) — flat-file ports are one small
+emitter each, so asking is usually enough. Neovim is next, in its own repo.
+
+## Palette
+
+<p align="center"><img src="assets/palette/celadon.svg" alt="celadon palette" width="760"></p>
+
+<details><summary><code>celadon-powder</code></summary>
+<p align="center"><img src="assets/palette/celadon-powder.svg" alt="celadon-powder palette" width="760"></p>
+</details>
+
+<details><summary><code>celadon-jade</code></summary>
+<p align="center"><img src="assets/palette/celadon-jade.svg" alt="celadon-jade palette" width="760"></p>
+</details>
+
+<details><summary><code>celadon-sky</code></summary>
+<p align="center"><img src="assets/palette/celadon-sky.svg" alt="celadon-sky palette" width="760"></p>
+</details>
+
+Machine-readable palette: [`ports/json/`](ports/json/) — slug → role → hex,
+one file per variant.
+
+## Generated, not hand-tuned
+
+Every hex in this repo is build output from [`generator/`](generator/):
+OKLCH parameters → gamut-fitted sRGB, hard-gated on APCA text and accent
+contrast and pairwise accent distinctness, with a color-vision-deficiency
+audit on top. CI re-runs the gates and regenerates every port on each change
+— committed files cannot drift from the generator.
 
 ## Repo layout
 

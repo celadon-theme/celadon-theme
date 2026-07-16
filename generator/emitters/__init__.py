@@ -6,6 +6,6 @@
 Emitters do no color math — they only format. Registering a new port is a
 module plus one entry here.
 """
-from . import ghostty
+from . import ghostty, iterm2, palette_json
 
-PORTS = {'ghostty': ghostty}
+PORTS = {'ghostty': ghostty, 'iterm2': iterm2, 'json': palette_json}

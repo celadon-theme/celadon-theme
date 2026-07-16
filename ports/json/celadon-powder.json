@@ -1,0 +1,25 @@
+{
+  "slug": "celadon-powder",
+  "name": "Celadon Powder",
+  "appearance": "dark",
+  "palette": {
+    "base": "#232b21",
+    "surface": "#273125",
+    "overlay": "#303c2d",
+    "muted": "#707c6e",
+    "subtle": "#8b9689",
+    "text": "#b5c1b2",
+    "red": "#ea928c",
+    "green": "#8fbf65",
+    "yellow": "#ccab3e",
+    "blue": "#6cb7ea",
+    "magenta": "#e38ccb",
+    "cyan": "#14c8b9",
+    "br_red": "#e8b0aa",
+    "br_green": "#a2d17b",
+    "br_yellow": "#dcbd5a",
+    "br_blue": "#97c6e9",
+    "br_magenta": "#e9a8d6",
+    "br_cyan": "#48daca"
+  }
+}

@@ -1,8 +1,9 @@
 # Contributing to Celadon
 
-Thanks for your interest! Celadon is early — the palette is in final
-validation — so the most useful contributions right now are issues:
-port requests, color problems you spot in real use, and screenshots.
+Thanks for your interest! Celadon is young — the palette is locked and
+the first ports are out — so the most useful contributions right now are
+issues: port requests, color problems you spot in real use, and
+screenshots.
 
 ## How Celadon is built (read this before touching hexes)
 
@@ -18,14 +19,17 @@ That means:
 - If a color looks wrong somewhere, **open an issue** describing where
   and how (screenshots help a lot). Fixes go through the generator so
   every variant and port stays consistent.
+- CI enforces this mechanically: every push re-runs the gates
+  (`generator/build_celadon.py --check`) and regenerates all committed
+  output — a hand-edited port or swatch fails the drift check.
 
 ## Repo layout
 
 This is the hub repo for the [`celadon-theme`](https://github.com/celadon-theme)
 org:
 
-- **Generator** — the palette source of truth and build gates (lands
-  here once the palette is locked).
+- **`generator/`** — the palette source of truth, build gates, and one
+  emitter per port format.
 - **`ports/<app>/`** — flat-file ports (Ghostty, iTerm2, Alacritty,
   Kitty, WezTerm, …): config files you copy or curl. These are build
   output, committed for easy install.
@@ -45,7 +49,10 @@ should:
   remap accents to taste;
 - be **generated** where possible: flat-file ports are emitted by the
   build, so a new port usually means a new emitter, not a hand-written
-  config.
+  config. An emitter is one module in `generator/emitters/` exposing
+  `filename(slug)` and `emit(slug, palette)`, plus a registry entry —
+  see `ghostty.py` for the shape. Regenerate with
+  `python3 generator/build_celadon.py --emit`.
 
 ## Pull requests
 

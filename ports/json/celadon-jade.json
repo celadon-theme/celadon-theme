@@ -1,0 +1,25 @@
+{
+  "slug": "celadon-jade",
+  "name": "Celadon Jade",
+  "appearance": "dark",
+  "palette": {
+    "base": "#060d05",
+    "surface": "#0b150a",
+    "overlay": "#182315",
+    "muted": "#748072",
+    "subtle": "#9ba799",
+    "text": "#dbe7d8",
+    "red": "#ffb7b0",
+    "green": "#acde83",
+    "yellow": "#ebca60",
+    "blue": "#99d4ff",
+    "magenta": "#ffaee7",
+    "cyan": "#4ce7d8",
+    "br_red": "#fedfdb",
+    "br_green": "#c9f9a1",
+    "br_yellow": "#ffe697",
+    "br_blue": "#d1ebfe",
+    "br_magenta": "#ffdbf3",
+    "br_cyan": "#8ffff1"
+  }
+}
