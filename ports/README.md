@@ -20,4 +20,4 @@ Ports installed by a plugin manager from a repo root (Neovim, tmux, …)
 live in their own repos under the
 [`celadon-theme`](https://github.com/celadon-theme) org, not here.
 
-🚧 First ports (Ghostty, iTerm2) land once the palette is locked.
+Available now: [Ghostty](ghostty/). Next up: iTerm2.
