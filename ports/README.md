@@ -20,9 +20,14 @@ Ports installed by a plugin manager from a repo root (Neovim, tmux, …)
 live in their own repos under the
 [`celadon-theme`](https://github.com/celadon-theme) org, not here.
 
-Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/).
+Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/) ·
+[oh-my-posh](oh-my-posh/).
 
-One special directory: [`json/`](json/) is the machine-readable palette
-(slug → role → hex) that the website and tooling consume — not an app port,
-but committed for the same reason: one source of truth, curl-able at a
-stable ref.
+Two exceptions to the "generated, one file per variant" rule:
+
+- [`oh-my-posh/`](oh-my-posh/) is **hand-written and variant-less** — it
+  contains no hexes at all, only named ANSI slots, so the one file follows
+  whichever Celadon variant the terminal runs.
+- [`json/`](json/) is the machine-readable palette (slug → role → hex) that
+  the website and tooling consume — not an app port, but committed for the
+  same reason: one source of truth, curl-able at a stable ref.

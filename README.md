@@ -74,6 +74,23 @@ open celadon.itermcolors
 Then **Settings → Profiles → Colors → Color Presets… → celadon**.
 Details: [ports/iterm2](ports/iterm2/).
 
+### oh-my-posh (the prompt)
+
+The prompt from the screenshots ships as a port too. It contains no hexes —
+every color is an ANSI slot, so it follows whichever Celadon variant your
+terminal runs. Needs a Nerd Font.
+
+```sh
+curl --create-dirs -o ~/.config/oh-my-posh/celadon.omp.toml \
+  https://raw.githubusercontent.com/celadon-theme/celadon-theme/main/ports/oh-my-posh/celadon.omp.toml
+```
+
+Then add to `~/.zshrc` (other shells: [ports/oh-my-posh](ports/oh-my-posh/)):
+
+```sh
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/celadon.omp.toml)"
+```
+
 ### Something else?
 
 [Request a port](../../issues/new/choose) — flat-file ports are one small
