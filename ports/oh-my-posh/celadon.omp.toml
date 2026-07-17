@@ -1,0 +1,127 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+
+# No hexes here, on purpose: every color is a named ANSI slot, so the prompt
+# takes its palette from the terminal. Run any Celadon variant (or any theme
+# with honest ANSI) and the prompt follows. Reference as 'p:name' / <p:name>.
+[palette]
+  muted = 'darkGray'   # frame (╭─ ╰─), 'on', execution time
+  info  = 'cyan'       # path, ahead/behind arrows
+  focus = 'magenta'    # git branch, prompt caret, nix badge
+  alert = 'red'        # dirty marker, error caret
+  badge = 'yellow'     # aws profile/region
+
+# Nerd Font glyphs used below (real UTF-8 in this file): U+F07B folder,
+# U+F313 nix, U+E0A0 git branch, U+E7AD aws, U+F017 clock. Use a Nerd Font,
+# or swap the icons out.
+
+# Divider above the prompt is a blank line (not a drawn rule): the first prompt
+# block below has newline = true, which inserts an empty line above it. The
+# transient prompt has no leading newline, so past commands stay compact and the
+# blank line only ever sits above the active prompt.
+
+# ── Top line, LEFT: connector, devshell badge, path, git ──────────────
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  # ╭─ connector
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:muted'
+    template = '╭─ '
+
+  # Nix devshell badge — only when IN_NIX_SHELL is set (nix-direnv flakes).
+  [[blocks.segments]]
+    type = 'nix-shell'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:focus'
+    template = " "
+
+  # Path with a Nerd Font folder glyph.
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:info'
+    template = " {{ .Path }} "
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  # Git — "on  <branch>", dirty '*' in alert red, ahead/behind arrows in cyan.
+  [[blocks.segments]]
+    type = 'git'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:focus'
+    template = "<p:muted>on</> {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}<p:alert>*</>{{ end }}<p:info>{{ if gt .Behind 0 }} ⇣{{ end }}{{ if gt .Ahead 0 }} ⇡{{ end }}</>"
+
+    [blocks.segments.properties]
+      branch_icon = " "
+      commit_icon = '@'
+      fetch_status = true
+
+# ── Top line, RIGHT (same line): execution time … AWS profile (far right) ──
+# Order matters: in a right-aligned block the LAST segment hugs the right edge.
+# AWS is last so it's pinned far right and never shifts; execution time sits to
+# its left and only appears for slow commands, so nothing AWS-side jumps around.
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  overflow = 'hidden'
+
+  # Execution time — left of AWS; only for commands over the threshold.
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:muted'
+    template = " {{ .FormattedMs }}"
+
+    [blocks.segments.properties]
+      threshold = 5000
+
+  # AWS profile/region — pinned far right; shows when a profile is active.
+  [[blocks.segments]]
+    type = 'aws'
+    style = 'plain'
+    background = 'transparent'
+    foreground = 'p:badge'
+    template = "      {{ .Profile }}{{ if .Region }} {{ .Region }}{{ end }}"
+
+# ── Bottom line: ╰─❯  (❯ = magenta on success, red on error) ──────────
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    background = 'transparent'
+    foreground_templates = [
+      "{{ if gt .Code 0 }}p:alert{{ end }}",
+      "{{ if eq .Code 0 }}p:focus{{ end }}",
+    ]
+    template = '<p:muted>╰─</>❯ '
+
+[transient_prompt]
+  background = 'transparent'
+  foreground_templates = [
+    "{{ if gt .Code 0 }}p:alert{{ end }}",
+    "{{ if eq .Code 0 }}p:focus{{ end }}",
+  ]
+  template = '❯ '
+
+[secondary_prompt]
+  foreground = 'p:focus'
+  background = 'transparent'
+  template = '❯❯ '

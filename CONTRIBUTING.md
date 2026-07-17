@@ -52,7 +52,9 @@ should:
   config. An emitter is one module in `generator/emitters/` exposing
   `filename(slug)` and `emit(slug, palette)`, plus a registry entry —
   see `ghostty.py` for the shape. Regenerate with
-  `python3 generator/build_celadon.py --emit`.
+  `python3 generator/build_celadon.py --emit`. Ports that contain no
+  hexes at all (like `ports/oh-my-posh/`, which uses named ANSI slots)
+  are hand-written instead — the honest-ANSI rule still applies.
 
 ## Pull requests
 
