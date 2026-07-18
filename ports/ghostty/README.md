@@ -28,9 +28,8 @@ theme = light:celadon-sky,dark:celadon
 ## Fonts
 
 The theme doesn't touch fonts. The screenshots use
-[Monaspace Neon](https://monaspace.githubnext.com)
-(`brew install --cask font-monaspace`) — set it in your own config if you
-want the same look:
+[Monaspace Neon](https://monaspace.githubnext.com) — set it in your own
+config if you want the same look:
 
 ```
 font-family = Monaspace Neon
