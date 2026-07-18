@@ -103,6 +103,20 @@ eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/celadon.omp.toml)"
 [Request a port](../../issues/new/choose) — flat-file ports are one small
 emitter each, so asking is usually enough. Neovim is next, in its own repo.
 
+### Fonts
+
+Celadon never sets your font — every port is colors only. For the look in
+the screenshots:
+
+- **Terminal font**: [Monaspace Neon](https://monaspace.githubnext.com) —
+  `brew install --cask font-monaspace`, or grab it from the
+  [releases](https://github.com/githubnext/monaspace/releases).
+- **Prompt glyphs**: the oh-my-posh port needs Nerd Font symbols. Ghostty
+  bundles them, so any font just works. Terminals that don't (iTerm2
+  included) need a patched build — `brew install --cask font-monaspace-nf`,
+  then select **MonaspiceNe Nerd Font** (Nerd Fonts' renamed Monaspace
+  Neon), or any font from [nerdfonts.com](https://www.nerdfonts.com).
+
 ## Palette
 
 <p align="center"><img src="assets/palette/celadon.svg" alt="celadon palette" width="760"></p>
