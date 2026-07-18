@@ -19,9 +19,9 @@ celadon**.
 `.itermcolors` file.)
 
 Using the [oh-my-posh port](../oh-my-posh/)? iTerm2 doesn't bundle Nerd
-Font symbols, so install a patched font
-(`brew install --cask font-monaspace-nf`) and select **MonaspiceNe Nerd
-Font** under **Settings → Profiles → Text**.
+Font symbols, so pick a [Nerd Font](https://www.nerdfonts.com) build under
+**Settings → Profiles → Text** (the screenshot font installs as
+**MonaspiceNe Nerd Font**).
 
 These files are generator output — don't edit them; if a color looks wrong,
 [open an issue](https://github.com/celadon-theme/celadon-theme/issues).

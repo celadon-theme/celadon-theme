@@ -16,10 +16,9 @@ Requires [oh-my-posh](https://ohmyposh.dev) and Nerd Font symbols for the
 folder / branch / nix glyphs (or swap them out in the config):
 
 - **Ghostty**: nothing to install — Nerd Font symbols are built in.
-- **iTerm2 and most others**: use a patched font, e.g.
-  `brew install --cask font-monaspace-nf` and select **MonaspiceNe Nerd
-  Font** (Nerd Fonts' renamed Monaspace Neon, the screenshot font), or any
-  font from [nerdfonts.com](https://www.nerdfonts.com).
+- **iTerm2 and most others**: select any
+  [Nerd Font](https://www.nerdfonts.com) build (the screenshot font
+  installs as **MonaspiceNe Nerd Font**).
 
 ```sh
 curl --create-dirs -o ~/.config/oh-my-posh/celadon.omp.toml \
