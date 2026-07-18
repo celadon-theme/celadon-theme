@@ -7,16 +7,29 @@ on:
 
 jobs:
   gates:
-    name: palette gates + drift check
+    name: palette gates + drift check (py${{ matrix.python }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      # two interpreter versions so a stdlib formatting change (e.g. plistlib
+      # float repr) surfaces as a matrix split, not a mystery drift failure
+      matrix:
+        python: ['3.12', '3.13']
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
 
       - name: Gates — APCA contrast + accent distinctness
         run: python3 generator/build_celadon.py --check
 
       - name: CVD audit (informational)
         run: python3 generator/distinctness.py
+
+      - name: Artifact lint — committed ports parse and keep their contracts
+        run: python3 generator/lint_ports.py
 
       - name: Drift check — committed output matches the generator
         run: |
