@@ -29,8 +29,7 @@ The palettes are **generated, not hand-tuned**: a small set of OKLCH parameters
 and rules, with every build gated on APCA contrast and accent-distinctness
 checks.
 
-<!-- hero screenshots land here: assets/screenshots/<slug>.png, one per
-     variant, same content in each (diff + test output + prompt) -->
+<p align="center"><img src="assets/screenshots/celadon.png" alt="celadon in Ghostty — a diff, pytest output, and the oh-my-posh prompt, every accent honest to its ANSI meaning" width="880"></p>
 
 ## Variants
 
@@ -42,6 +41,14 @@ One graded family, light → dark: **sky → powder → celadon → jade**.
 | `celadon-powder` | dark · low contrast | night, dim rooms |
 | `celadon` | dark · medium contrast | **the default** |
 | `celadon-jade` | dark · high contrast | bright rooms, glare |
+
+<details><summary>Same content in every variant</summary>
+<p align="center">
+  <img src="assets/screenshots/celadon-sky.png" alt="celadon-sky — light variant" width="880">
+  <img src="assets/screenshots/celadon-powder.png" alt="celadon-powder — dark, low contrast" width="880">
+  <img src="assets/screenshots/celadon-jade.png" alt="celadon-jade — dark, high contrast" width="880">
+</p>
+</details>
 
 ## Install
 
