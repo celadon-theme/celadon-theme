@@ -18,5 +18,10 @@ celadon**.
 (Manual alternative: Color Presets… → **Import…**, then pick the downloaded
 `.itermcolors` file.)
 
+Using the [oh-my-posh port](../oh-my-posh/)? iTerm2 doesn't bundle Nerd
+Font symbols, so install a patched font
+(`brew install --cask font-monaspace-nf`) and select **MonaspiceNe Nerd
+Font** under **Settings → Profiles → Text**.
+
 These files are generator output — don't edit them; if a color looks wrong,
 [open an issue](https://github.com/celadon-theme/celadon-theme/issues).
