@@ -21,7 +21,8 @@ live in their own repos under the
 [`celadon-theme`](https://github.com/celadon-theme) org, not here.
 
 Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/) ·
-[oh-my-posh](oh-my-posh/).
+[oh-my-posh](oh-my-posh/) · [Claude Code](claude-code/) ·
+[termic](termic/).
 
 Two exceptions to the "generated, one file per variant" rule:
 

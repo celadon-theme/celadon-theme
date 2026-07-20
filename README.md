@@ -98,6 +98,12 @@ Then add to `~/.zshrc` (other shells: [ports/oh-my-posh](ports/oh-my-posh/)):
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/celadon.omp.toml)"
 ```
 
+### Claude Code · termic
+
+Theme JSON for both, generated like everything else — drop the file in and
+pick it from the app's theme picker:
+[ports/claude-code](ports/claude-code/) · [ports/termic](ports/termic/).
+
 ### Something else?
 
 [Request a port](../../issues/new/choose) — flat-file ports are one small
