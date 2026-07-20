@@ -3,12 +3,15 @@
 drift-free. The drift check can't catch a broken emitter — broken output
 matches broken output — so this parses every artifact for real:
 
-  ghostty     all 16 palette slots + required keys, values are hexes
-  iterm2      plist parses; Ansi 0-15 + Background/Foreground; components in [0,1]
-  json        parses; slug matches; all 18 roles present, values are hexes
-  oh-my-posh  TOML parses; palette values are named ANSI slots; NO hex
-              anywhere in the file (the follow-the-terminal contract)
-  svg cards   XML parses
+  ghostty      all 16 palette slots + required keys, values are hexes
+  iterm2       plist parses; Ansi 0-15 + Background/Foreground; components in [0,1]
+  json         parses; slug matches; all 18 roles present, values are hexes
+  claude-code  parses; base is dark/light; every override is a hex
+  termic       parses; colorScheme is dark/light; ui/terminal values are hex
+               or rgba(); terminal block carries all 16 ANSI slots
+  oh-my-posh   TOML parses; palette values are named ANSI slots; NO hex
+               anywhere in the file (the follow-the-terminal contract)
+  svg cards    XML parses
 
 Stdlib only. Exits non-zero listing every failure.  Usage:
   python3 generator/lint_ports.py
@@ -22,6 +25,10 @@ ROLES = ['base', 'surface', 'overlay', 'muted', 'subtle', 'text',
          'red', 'green', 'yellow', 'blue', 'magenta', 'cyan',
          'br_red', 'br_green', 'br_yellow', 'br_blue', 'br_magenta', 'br_cyan']
 HEX = re.compile(r'^#[0-9a-f]{6}$')
+RGBA = re.compile(r'^rgba\(\d{1,3},\d{1,3},\d{1,3},0?\.\d+\)$')
+TERM_KEYS = (['background', 'foreground', 'cursor', 'cursorAccent', 'selectionBackground']
+             + [c for b in ('black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
+                for c in (b, 'bright' + b[0].upper() + b[1:])])
 ANSI_NAMES = {'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan',
               'white', 'darkGray', 'lightRed', 'lightGreen', 'lightYellow',
               'lightBlue', 'lightMagenta', 'lightCyan', 'lightWhite',
@@ -88,6 +95,35 @@ def lint_json(slug):
     if bad: err(path, f'non-hex values: {bad}')
 
 
+def lint_claude(slug):
+    path, raw = read('ports', 'claude-code', f'{slug}.json')
+    if raw is None: return
+    try:
+        d = json.loads(raw)
+    except Exception as e:
+        return err(path, f'does not parse: {e}')
+    if d.get('base') not in ('dark', 'light'): err(path, f"base is {d.get('base')!r}")
+    bad = [f'{k}={v!r}' for k, v in d.get('overrides', {}).items() if not HEX.match(str(v))]
+    if bad: err(path, f'non-hex overrides: {bad}')
+
+
+def lint_termic(slug):
+    path, raw = read('ports', 'termic', f'{slug}.json')
+    if raw is None: return
+    try:
+        d = json.loads(raw)
+    except Exception as e:
+        return err(path, f'does not parse: {e}')
+    if d.get('colorScheme') not in ('dark', 'light'):
+        err(path, f"colorScheme is {d.get('colorScheme')!r}")
+    for block in ('ui', 'terminal'):
+        bad = [f'{k}={v!r}' for k, v in d.get(block, {}).items()
+               if not (HEX.match(str(v)) or RGBA.match(str(v)))]
+        if bad: err(path, f'{block}: bad values: {bad}')
+    missing = [k for k in TERM_KEYS if k not in d.get('terminal', {})]
+    if missing: err(path, f'terminal block missing: {missing}')
+
+
 def lint_omp():
     path, raw = read('ports', 'oh-my-posh', 'celadon.omp.toml')
     if raw is None: return
@@ -113,10 +149,11 @@ def lint_svg(slug):
 
 if __name__ == '__main__':
     for slug in SLUGS:
-        lint_ghostty(slug); lint_iterm2(slug); lint_json(slug); lint_svg(slug)
+        lint_ghostty(slug); lint_iterm2(slug); lint_json(slug)
+        lint_claude(slug); lint_termic(slug); lint_svg(slug)
     lint_omp()
     for e in errors: print('FAIL', e)
-    n = 4*len(SLUGS) + 1
+    n = 6*len(SLUGS) + 1
     print(f'{n - len(errors)}/{n} artifacts clean' if not errors
           else f'{len(errors)} problem(s)')
     sys.exit(1 if errors else 0)

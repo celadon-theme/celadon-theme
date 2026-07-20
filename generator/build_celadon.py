@@ -79,6 +79,33 @@ med = dark_medium()
 THEMES = {'celadon-powder': pivot_scale(med, 0.80), 'celadon': med,
           'celadon-jade': pivot_scale(med, 1.18), 'celadon-sky': light()}
 
+
+# ---- derived tones: computed tints for rich ports --------------------------
+def tints(p):
+    """Accent-tinted fields and depth steps that rich ports need (claude-code,
+    termic; nvim later): diff backgrounds, a field step past overlay, a deep
+    accent. Computed from each theme's own base — dark themes tint upward,
+    light themes downward — never hand-picked.
+    """
+    L, _, _ = to_oklch(p['base'])
+    d = 1 if L < 0.5 else -1
+    out = {}
+    for name, role in (('add', 'green'), ('del', 'red')):
+        h = ACC_HUE[role]
+        out[f'diff_{name}'] = to_hex(L + d*0.055, 0.035, h)
+        out[f'diff_{name}_dim'] = to_hex(L + d*0.030, 0.025, h)
+        out[f'diff_{name}_word'] = to_hex(L + d*0.105, 0.050, h)
+    out['magenta_tint'] = to_hex(L + d*0.050, 0.025, ACC_HUE['magenta'])
+    Lo, Co, ho = to_oklch(p['overlay'])
+    out['overlay2'] = to_hex(Lo + d*0.05, Co, ho)
+    La, Ca, ha = to_oklch(p['green'])
+    out['green_deep'] = to_hex(La - 0.18, min(Ca, 0.09), ha)  # capped C: deep, not loud
+    return out
+
+
+for _p in THEMES.values():
+    _p.update(tints(_p))
+
 # Hard gate floors — just under the locked values, so the locked build always
 # passes but a param change that genuinely regresses fails CI. Conformance to
 # the exact locked hexes is the drift check's job (regenerate + diff ports/).
