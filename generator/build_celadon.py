@@ -50,6 +50,9 @@ def dark_medium():
     for a in ACC_ROLES:                       # L 0.80, chroma target 0.13 (clamped)
         h = ACC_HUE[a]; L = 0.80; C = min(0.13, maxC(L, h)*0.94)
         p[a] = to_hex(L, C, h); p['br_'+a] = to_hex(L+0.07, C*0.95, h)
+    for a, h in (('orange', 55), ('indigo', 280)):   # decorative extras, NOT ANSI roles
+        L = 0.80; C = min(0.13, maxC(L, h) * 0.94)
+        p[a] = to_hex(L, C, h); p['br_' + a] = to_hex(L + 0.07, C * 0.95, h)
     return p
 
 
@@ -68,7 +71,8 @@ def light():
                              muted=(0.60, 0.020), subtle=(0.50, 0.022), text=(0.37, 0.016)).items():
         p[role] = to_hex(L, C, HUE)
     LA = dict(red=(0.51, 27), green=(0.52, 142), yellow=(0.58, 80), blue=(0.48, 250),
-              magenta=(0.49, 338), cyan=(0.51, 192))
+              magenta=(0.49, 338), cyan=(0.51, 192),
+              orange=(0.56, 55), indigo=(0.49, 285))
     for a, (L, h) in LA.items():              # uniform chroma budget: family, not primaries
         C = min(0.11, maxC(L, h)*0.90)
         p[a] = to_hex(L, C, h); p['br_'+a] = to_hex(L-0.08, min(C*1.05, maxC(L-0.08, h)), h)
@@ -98,8 +102,8 @@ def tints(p):
     out['magenta_tint'] = to_hex(L + d*0.050, 0.025, ACC_HUE['magenta'])
     Lo, Co, ho = to_oklch(p['overlay'])
     out['overlay2'] = to_hex(Lo + d*0.05, Co, ho)
-    La, Ca, ha = to_oklch(p['green'])
-    out['green_deep'] = to_hex(La - 0.18, min(Ca, 0.09), ha)  # capped C: deep, not loud
+    Lm, Cm, hm = to_oklch(p['magenta'])
+    out['magenta_deep'] = to_hex(Lm - 0.18, min(Cm, 0.09), hm)  # capped C: deep, not loud
     return out
 
 

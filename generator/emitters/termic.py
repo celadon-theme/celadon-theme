@@ -1,6 +1,6 @@
 """termic: theme JSON for ~/.config/termic/themes/, one <slug>.json per
 theme. The ui block maps the field ramp (bg → bg-3) and brand accents
-(accent = the celadon green, ok = cyan so it reads apart from the accent);
+(accent = magenta, the family's focus chrome, so ok stays honest green);
 the terminal block is the same honest ANSI mapping as every terminal port.
 rgba() strings put alpha over role hexes — formatting, not new colors.
 """
@@ -26,10 +26,10 @@ def emit(slug, p):
             'fg': p['text'], 'fg-dim': p['subtle'], 'fg-faint': p['muted'],
             'border': p['muted'], 'border-soft': p['overlay'],
             'hover': _rgba(p['text'], 0.05),
-            'sel': _rgba(p['green'], 0.22),
-            'accent': p['green'], 'accent-soft': _rgba(p['green'], 0.22),
-            'accent-deep': p['green_deep'], 'accent-fg': p['base'],
-            'ok': p['cyan'], 'ok-fg': p['base'],
+            'sel': _rgba(p['magenta'], 0.22),
+            'accent': p['magenta'], 'accent-soft': _rgba(p['magenta'], 0.22),
+            'accent-deep': p['magenta_deep'], 'accent-fg': p['base'],
+            'ok': p['green'], 'ok-fg': p['base'],
             'warn': p['yellow'], 'err': p['red'],
         },
         'terminal': {
