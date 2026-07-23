@@ -1,0 +1,18 @@
+# celadon-sky · calm green. honest color.
+# https://github.com/celadon-theme/celadon-theme — generated, do not edit
+
+[colors]
+background = "#eaf6e8"
+foreground = "#3b423a"
+cursor_bg = "#5d675b"
+cursor_fg = "#eaf6e8"
+cursor_border = "#5d675b"
+selection_bg = "#cee1ca"
+selection_fg = "#3b423a"
+ansi = ["#cee1ca", "#9b4a43", "#40783b", "#9c7220", "#246099", "#874576", "#1c7472", "#3b423a"]
+brights = ["#7a8378", "#84312b", "#266221", "#825b00", "#004982", "#702d60", "#005c5a", "#3b423a"]
+
+[metadata]
+name = "celadon-sky"
+author = "Celadon"
+origin_url = "https://github.com/celadon-theme/celadon-theme"

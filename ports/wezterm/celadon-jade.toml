@@ -1,0 +1,18 @@
+# celadon-jade · calm green. honest color.
+# https://github.com/celadon-theme/celadon-theme — generated, do not edit
+
+[colors]
+background = "#060d05"
+foreground = "#dbe7d8"
+cursor_bg = "#9ba799"
+cursor_fg = "#060d05"
+cursor_border = "#9ba799"
+selection_bg = "#182315"
+selection_fg = "#dbe7d8"
+ansi = ["#182315", "#ffb7b0", "#acde83", "#ebca60", "#99d4ff", "#ffaee7", "#4ce7d8", "#dbe7d8"]
+brights = ["#748072", "#fedfdb", "#c9f9a1", "#ffe697", "#d1ebfe", "#ffdbf3", "#8ffff1", "#dbe7d8"]
+
+[metadata]
+name = "celadon-jade"
+author = "Celadon"
+origin_url = "https://github.com/celadon-theme/celadon-theme"

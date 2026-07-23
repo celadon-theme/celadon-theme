@@ -1,0 +1,23 @@
+{
+  "name": "celadon-jade",
+  "background": "#060d05",
+  "foreground": "#dbe7d8",
+  "cursorColor": "#9ba799",
+  "selectionBackground": "#182315",
+  "black": "#182315",
+  "red": "#ffb7b0",
+  "green": "#acde83",
+  "yellow": "#ebca60",
+  "blue": "#99d4ff",
+  "purple": "#ffaee7",
+  "cyan": "#4ce7d8",
+  "white": "#dbe7d8",
+  "brightBlack": "#748072",
+  "brightRed": "#fedfdb",
+  "brightGreen": "#c9f9a1",
+  "brightYellow": "#ffe697",
+  "brightBlue": "#d1ebfe",
+  "brightPurple": "#ffdbf3",
+  "brightCyan": "#8ffff1",
+  "brightWhite": "#dbe7d8"
+}

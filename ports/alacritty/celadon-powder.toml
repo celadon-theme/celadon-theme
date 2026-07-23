@@ -1,0 +1,34 @@
+# celadon-powder · calm green. honest color.
+# https://github.com/celadon-theme/celadon-theme — generated, do not edit
+
+[colors.primary]
+background = "#232b21"
+foreground = "#b5c1b2"
+
+[colors.cursor]
+text = "#232b21"
+cursor = "#8b9689"
+
+[colors.selection]
+text = "#b5c1b2"
+background = "#303c2d"
+
+[colors.normal]
+black = "#303c2d"
+red = "#ea928c"
+green = "#8fbf65"
+yellow = "#ccab3e"
+blue = "#6cb7ea"
+magenta = "#e38ccb"
+cyan = "#14c8b9"
+white = "#b5c1b2"
+
+[colors.bright]
+black = "#707c6e"
+red = "#e8b0aa"
+green = "#a2d17b"
+yellow = "#dcbd5a"
+blue = "#97c6e9"
+magenta = "#e9a8d6"
+cyan = "#48daca"
+white = "#b5c1b2"
