@@ -104,6 +104,13 @@ Theme JSON for both, generated like everything else — drop the file in and
 pick it from the app's theme picker:
 [ports/claude-code](ports/claude-code/) · [ports/termic](ports/termic/).
 
+### More terminals
+
+Same four variants for
+[Alacritty](ports/alacritty/) · [kitty](ports/kitty/) ·
+[WezTerm](ports/wezterm/) · [Windows Terminal](ports/windows-terminal/) —
+install steps in each port README.
+
 ### Something else?
 
 [Request a port](../../issues/new/choose) — flat-file ports are one small

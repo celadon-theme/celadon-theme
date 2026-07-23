@@ -1,0 +1,23 @@
+{
+  "name": "celadon",
+  "background": "#131b11",
+  "foreground": "#c9d5c6",
+  "cursorColor": "#939f91",
+  "selectionBackground": "#232f20",
+  "black": "#232f20",
+  "red": "#fba29b",
+  "green": "#9ecf75",
+  "yellow": "#dcbb50",
+  "blue": "#7cc7fb",
+  "purple": "#f49cdb",
+  "cyan": "#37d8c9",
+  "white": "#c9d5c6",
+  "brightBlack": "#727e70",
+  "brightRed": "#fec4be",
+  "brightGreen": "#b6e68f",
+  "brightYellow": "#f1d26f",
+  "brightBlue": "#abdbfe",
+  "brightPurple": "#ffbceb",
+  "brightCyan": "#62efdf",
+  "brightWhite": "#c9d5c6"
+}

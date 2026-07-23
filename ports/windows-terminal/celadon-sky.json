@@ -1,0 +1,23 @@
+{
+  "name": "celadon-sky",
+  "background": "#eaf6e8",
+  "foreground": "#3b423a",
+  "cursorColor": "#5d675b",
+  "selectionBackground": "#cee1ca",
+  "black": "#cee1ca",
+  "red": "#9b4a43",
+  "green": "#40783b",
+  "yellow": "#9c7220",
+  "blue": "#246099",
+  "purple": "#874576",
+  "cyan": "#1c7472",
+  "white": "#3b423a",
+  "brightBlack": "#7a8378",
+  "brightRed": "#84312b",
+  "brightGreen": "#266221",
+  "brightYellow": "#825b00",
+  "brightBlue": "#004982",
+  "brightPurple": "#702d60",
+  "brightCyan": "#005c5a",
+  "brightWhite": "#3b423a"
+}
