@@ -113,8 +113,10 @@ install steps in each port README.
 
 ### Something else?
 
-[Request a port](../../issues/new/choose) — flat-file ports are one small
-emitter each, so asking is usually enough. Neovim is next, in its own repo.
+Neovim lives in its own repo:
+[`celadon-theme/nvim`](https://github.com/celadon-theme/nvim).
+For anything else, [request a port](../../issues/new/choose) — flat-file
+ports are one small emitter each, so asking is usually enough.
 
 ### Fonts
 

@@ -25,6 +25,10 @@ Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/) ·
 [Windows Terminal](windows-terminal/) · [oh-my-posh](oh-my-posh/) ·
 [Claude Code](claude-code/) · [termic](termic/).
 
+[`nvim/`](nvim/) is a special case: the generated palette feed for
+[`celadon-theme/nvim`](https://github.com/celadon-theme/nvim) — install the
+theme from that repo, not from here.
+
 Two exceptions to the "generated, one file per variant" rule:
 
 - [`oh-my-posh/`](oh-my-posh/) is **hand-written and variant-less** — it
