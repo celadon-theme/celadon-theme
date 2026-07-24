@@ -1,12 +1,6 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/celadon-logo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/celadon-logo-light.svg">
-    <img src="assets/celadon-logo-universal.svg" alt="Celadon logo — a crackle-glaze tile" width="120">
-  </picture>
-</p>
-
-<h1 align="center">Celadon</h1>
+<h1 align="center">
+  <img src="assets/celadon-combo.svg" alt="Celadon" width="340">
+</h1>
 
 <p align="center"><em>calm green. honest color.</em></p>
 
