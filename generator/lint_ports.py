@@ -13,6 +13,8 @@ matches broken output — so this parses every artifact for real:
   kitty        required keys + color0-15 present, values are hexes
   wezterm      TOML parses; ansi/brights are 8 hexes each; metadata.name = slug
   windows-terminal  parses; full scheme key set, values are hexes
+  nvim         lua palette module: every expected role present, values hex,
+               appearance dark/light
   oh-my-posh   TOML parses; palette values are named ANSI slots; NO hex
                anywhere in the file (the follow-the-terminal contract)
   svg cards    XML parses
@@ -198,6 +200,22 @@ def lint_wt(slug):
     if bad: err(path, f'non-hex values: {bad}')
 
 
+def lint_nvim(slug):
+    from emitters.nvim import ROLES as NVIM_ROLES
+    path, raw = read('ports', 'nvim', f'{slug}.lua')
+    if raw is None: return
+    text = raw.decode()
+    kv = dict(re.findall(r'^  (\w+) = "([^"]*)",$', text, re.M))
+    if kv.get('appearance') not in ('dark', 'light'):
+        err(path, f"appearance is {kv.get('appearance')!r}")
+    missing = [r for r in NVIM_ROLES if r not in kv]
+    if missing: err(path, f'missing roles: {missing}')
+    bad = [f'{k}={v}' for k, v in kv.items() if k != 'appearance' and not HEX.match(v)]
+    if bad: err(path, f'non-hex values: {bad}')
+    if not text.rstrip().endswith('}') or 'return {' not in text:
+        err(path, 'not a lua table module')
+
+
 def lint_omp():
     path, raw = read('ports', 'oh-my-posh', 'celadon.omp.toml')
     if raw is None: return
@@ -226,9 +244,10 @@ if __name__ == '__main__':
         lint_ghostty(slug); lint_iterm2(slug); lint_json(slug)
         lint_claude(slug); lint_termic(slug); lint_svg(slug)
         lint_alacritty(slug); lint_kitty(slug); lint_wezterm(slug); lint_wt(slug)
+        lint_nvim(slug)
     lint_omp()
     for e in errors: print('FAIL', e)
-    n = 10*len(SLUGS) + 1
+    n = 11*len(SLUGS) + 1
     print(f'{n - len(errors)}/{n} artifacts clean' if not errors
           else f'{len(errors)} problem(s)')
     sys.exit(1 if errors else 0)
