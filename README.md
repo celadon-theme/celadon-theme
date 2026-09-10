@@ -1,6 +1,12 @@
-<h1 align="center">
-  <img src="assets/celadon-combo.svg" alt="Celadon" width="340">
-</h1>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/celadon-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/celadon-light.svg">
+    <img src="assets/celadon-light.svg" alt="Celadon logo — a celadon vessel in three soft facets" width="120">
+  </picture>
+</p>
+
+<h1 align="center">Celadon</h1>
 
 <p align="center"><em>calm green. honest color.</em></p>
 
