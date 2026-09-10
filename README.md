@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/celadon-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/celadon-light.svg">
-    <img src="assets/celadon-light.svg" alt="Celadon logo — a celadon vessel in three soft facets" width="120">
-  </picture>
+  <img src="assets/celadon-universal-contour.svg" alt="Celadon logo — a celadon vessel in three soft facets" width="120">
 </p>
 
 <h1 align="center">Celadon</h1>
