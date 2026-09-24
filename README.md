@@ -106,6 +106,12 @@ Set the four custom theme colors from [ports/slack](ports/slack/).
 All four variants are included, with color mode and sidebar setup instructions.
 Slack controls the remaining colors, so the result approximates Celadon.
 
+### Codex
+
+Import a desktop appearance theme from [ports/codex](ports/codex/), or install
+a CLI syntax theme from [ports/codex-cli](ports/codex-cli/) and select it with
+`/theme`. Both ports include all four variants.
+
 ### More terminals
 
 Same four variants for
@@ -122,7 +128,9 @@ ports are one small emitter each, so asking is usually enough.
 
 ### Fonts
 
-Celadon never sets your font — every port is colors only. The screenshots
+Celadon does not prescribe a font. Codex desktop imports reset UI and code
+fonts to the app defaults because its share format requires those fields;
+you can reapply your fonts afterward. Other ports leave fonts alone. The screenshots
 use [Monaspace Neon](https://monaspace.githubnext.com). The oh-my-posh
 port needs Nerd Font symbols: Ghostty has them built in; elsewhere use any
 [Nerd Font](https://www.nerdfonts.com) build (Monaspace Neon's installs as
