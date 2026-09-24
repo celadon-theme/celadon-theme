@@ -7,6 +7,8 @@ matches broken output — so this parses every artifact for real:
   iterm2       plist parses; Ansi 0-15 + Background/Foreground; components in [0,1]
   json         parses; slug matches; all 18 roles present, values are hexes
   claude-code  parses; base is dark/light; every override is a hex
+  codex        v1 share string parses; appearance schema and semantic colors
+  codex-cli    TextMate plist parses; global colors and syntax scopes present
   termic       parses; colorScheme is dark/light; ui/terminal values are hex
                or rgba(); terminal block carries all 16 ANSI slots
   alacritty    TOML parses; primary/cursor/selection/normal/bright complete, hexes
@@ -112,6 +114,53 @@ def lint_claude(slug):
     if d.get('base') not in ('dark', 'light'): err(path, f"base is {d.get('base')!r}")
     bad = [f'{k}={v!r}' for k, v in d.get('overrides', {}).items() if not HEX.match(str(v))]
     if bad: err(path, f'non-hex overrides: {bad}')
+
+
+def lint_codex(slug):
+    path, raw = read('ports', 'codex', f'{slug}.txt')
+    if raw is None: return
+    try:
+        prefix = b'codex-theme-v1:'
+        if not raw.startswith(prefix): raise ValueError('missing v1 prefix')
+        d = json.loads(raw[len(prefix):])
+        t = d['theme']
+        assert d['variant'] == ('light' if slug == 'celadon-sky' else 'dark')
+        assert d['codeThemeId'] == 'codex'
+        assert t['accentSource'] == 'custom'
+        assert type(t['contrast']) is int and 0 <= t['contrast'] <= 100
+        assert t['opaqueWindows'] is True
+        assert t['fonts'] == {'code': None, 'ui': None}
+        for k in ('accent', 'ink', 'surface'):
+            assert HEX.fullmatch(t[k]), f'invalid {k}'
+        for k in ('diffAdded', 'diffRemoved', 'skill'):
+            assert HEX.fullmatch(t['semanticColors'][k]), f'invalid {k}'
+    except Exception as e:
+        err(path, f'invalid desktop share string: {e}')
+
+
+def lint_codex_cli(slug):
+    path, raw = read('ports', 'codex-cli', f'{slug}.tmTheme')
+    if raw is None: return
+    try:
+        d = plistlib.loads(raw)
+        assert d['name'] == slug
+        settings = d['settings']
+        assert 'scope' not in settings[0]
+        for key in ('background', 'foreground', 'caret', 'selection', 'lineHighlight'):
+            assert HEX.fullmatch(settings[0]['settings'][key]), f'invalid {key}'
+        scopes = set()
+        for rule in settings[1:]:
+            scopes.update(rule['scope'].split(', '))
+            assert rule['settings'], 'empty style'
+            for key, value in rule['settings'].items():
+                if key == 'fontStyle':
+                    assert value in ('bold', 'italic', 'underline')
+                else:
+                    assert key in ('foreground', 'background') and HEX.fullmatch(value)
+        assert {'comment', 'string', 'keyword', 'entity.name.function',
+                'markup.inserted', 'markup.deleted'} <= scopes
+    except Exception as e:
+        err(path, f'invalid TextMate theme: {e}')
 
 
 def lint_termic(slug):
@@ -251,11 +300,12 @@ if __name__ == '__main__':
     for slug in SLUGS:
         lint_ghostty(slug); lint_iterm2(slug); lint_json(slug)
         lint_claude(slug); lint_termic(slug); lint_svg(slug)
+        lint_codex(slug); lint_codex_cli(slug)
         lint_alacritty(slug); lint_kitty(slug); lint_wezterm(slug); lint_wt(slug)
         lint_nvim(slug); lint_slack(slug)
     lint_omp()
     for e in errors: print('FAIL', e)
-    n = 12*len(SLUGS) + 1
+    n = 14*len(SLUGS) + 1
     print(f'{n - len(errors)}/{n} artifacts clean' if not errors
           else f'{len(errors)} problem(s)')
     sys.exit(1 if errors else 0)
