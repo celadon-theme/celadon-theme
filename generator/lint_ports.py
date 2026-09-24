@@ -15,6 +15,7 @@ matches broken output — so this parses every artifact for real:
   windows-terminal  parses; full scheme key set, values are hexes
   nvim         lua palette module: every expected role present, values hex,
                appearance dark/light
+  slack        one line of ten comma-separated hex colors for legacy import
   oh-my-posh   TOML parses; palette values are named ANSI slots; NO hex
                anywhere in the file (the follow-the-terminal contract)
   svg cards    XML parses
@@ -216,6 +217,13 @@ def lint_nvim(slug):
         err(path, 'not a lua table module')
 
 
+def lint_slack(slug):
+    path, raw = read('ports', 'slack', f'{slug}.txt')
+    if raw is None: return
+    if not re.fullmatch(rb'#[0-9a-f]{6}(,#[0-9a-f]{6}){9}\n', raw):
+        err(path, 'expected one line of ten comma-separated hex colors')
+
+
 def lint_omp():
     path, raw = read('ports', 'oh-my-posh', 'celadon.omp.toml')
     if raw is None: return
@@ -244,10 +252,10 @@ if __name__ == '__main__':
         lint_ghostty(slug); lint_iterm2(slug); lint_json(slug)
         lint_claude(slug); lint_termic(slug); lint_svg(slug)
         lint_alacritty(slug); lint_kitty(slug); lint_wezterm(slug); lint_wt(slug)
-        lint_nvim(slug)
+        lint_nvim(slug); lint_slack(slug)
     lint_omp()
     for e in errors: print('FAIL', e)
-    n = 11*len(SLUGS) + 1
+    n = 12*len(SLUGS) + 1
     print(f'{n - len(errors)}/{n} artifacts clean' if not errors
           else f'{len(errors)} problem(s)')
     sys.exit(1 if errors else 0)

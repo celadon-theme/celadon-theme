@@ -100,6 +100,12 @@ Theme JSON for both, generated like everything else — drop the file in and
 pick it from the app's theme picker:
 [ports/claude-code](ports/claude-code/) · [ports/termic](ports/termic/).
 
+### Slack
+
+Import a generated theme string from [ports/slack](ports/slack/).
+All four variants are included; current Slack maps imported colors to its
+built-in palette, so the result approximates Celadon.
+
 ### More terminals
 
 Same four variants for
