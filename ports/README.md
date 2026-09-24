@@ -23,7 +23,7 @@ live in their own repos under the
 Available now: [Ghostty](ghostty/) · [iTerm2](iterm2/) ·
 [Alacritty](alacritty/) · [kitty](kitty/) · [WezTerm](wezterm/) ·
 [Windows Terminal](windows-terminal/) · [oh-my-posh](oh-my-posh/) ·
-[Claude Code](claude-code/) · [termic](termic/).
+[Claude Code](claude-code/) · [termic](termic/) · [Slack](slack/).
 
 [`nvim/`](nvim/) is a special case: the generated palette feed for
 [`celadon-theme/nvim`](https://github.com/celadon-theme/nvim) — install the

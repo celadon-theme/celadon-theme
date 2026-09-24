@@ -7,9 +7,9 @@ Emitters do no color math — they only format. Registering a new port is a
 module plus one entry here.
 """
 from . import (alacritty, claude_code, ghostty, iterm2, kitty, nvim,
-               palette_json, termic, wezterm, windows_terminal)
+               palette_json, slack, termic, wezterm, windows_terminal)
 
 PORTS = {'ghostty': ghostty, 'iterm2': iterm2, 'json': palette_json,
          'claude-code': claude_code, 'termic': termic,
          'alacritty': alacritty, 'kitty': kitty, 'wezterm': wezterm,
-         'windows-terminal': windows_terminal, 'nvim': nvim}
+         'windows-terminal': windows_terminal, 'nvim': nvim, 'slack': slack}
