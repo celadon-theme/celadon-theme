@@ -104,6 +104,15 @@ def tints(p):
     out['overlay2'] = to_hex(Lo + d*0.05, Co, ho)
     Lm, Cm, hm = to_oklch(p['magenta'])
     out['magenta_deep'] = to_hex(Lm - 0.18, min(Cm, 0.09), hm)  # capped C: deep, not loud
+    # Slack leaves the conversation surface neutral, so give its navigation
+    # enough lightness and chroma to carry the sage identity on its own.
+    out['slack_navigation'] = to_hex(L + (0.19 if d > 0 else -0.07), 0.060, HUE)
+    Lg, Cg, hg = to_oklch(p['green'])
+    Lc, Cc, hc = to_oklch(p['cyan'])
+    # A green/cyan midpoint makes a mint selection without the ANSI green's
+    # yellow cast. Keep the variant's accent lightness, with softer chroma.
+    out['slack_selection'] = to_hex((Lg + Lc) / 2, min((Cg + Cc) / 2, 0.085),
+                                    (hg + hc) / 2)
     return out
 
 

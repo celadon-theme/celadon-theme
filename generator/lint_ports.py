@@ -15,7 +15,7 @@ matches broken output — so this parses every artifact for real:
   windows-terminal  parses; full scheme key set, values are hexes
   nvim         lua palette module: every expected role present, values hex,
                appearance dark/light
-  slack        one line of ten comma-separated hex colors for legacy import
+  slack        four comma-separated hex colors for the current custom theme controls
   oh-my-posh   TOML parses; palette values are named ANSI slots; NO hex
                anywhere in the file (the follow-the-terminal contract)
   svg cards    XML parses
@@ -220,8 +220,8 @@ def lint_nvim(slug):
 def lint_slack(slug):
     path, raw = read('ports', 'slack', f'{slug}.txt')
     if raw is None: return
-    if not re.fullmatch(rb'#[0-9a-f]{6}(,#[0-9a-f]{6}){9}\n', raw):
-        err(path, 'expected one line of ten comma-separated hex colors')
+    if not re.fullmatch(rb'#[0-9a-f]{6}(,#[0-9a-f]{6}){3}\n', raw):
+        err(path, 'expected one line of four comma-separated hex colors')
 
 
 def lint_omp():
