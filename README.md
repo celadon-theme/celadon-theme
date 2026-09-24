@@ -102,9 +102,9 @@ pick it from the app's theme picker:
 
 ### Slack
 
-Import a generated theme string from [ports/slack](ports/slack/).
-All four variants are included; current Slack maps imported colors to its
-built-in palette, so the result approximates Celadon.
+Set the four custom theme colors from [ports/slack](ports/slack/).
+All four variants are included, with color mode and sidebar setup instructions.
+Slack controls the remaining colors, so the result approximates Celadon.
 
 ### More terminals
 
