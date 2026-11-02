@@ -137,11 +137,14 @@ ports are one small emitter each, so asking is usually enough.
 
 Celadon does not prescribe a font. Codex desktop imports reset UI and code
 fonts to the app defaults because its share format requires those fields;
-you can reapply your fonts afterward. The Wiffletree port sets Figtree and JetBrains Mono; other ports leave fonts alone. The screenshots
-use [Monaspace Neon](https://monaspace.githubnext.com). The oh-my-posh
-port needs Nerd Font symbols: Ghostty has them built in; elsewhere use any
-[Nerd Font](https://www.nerdfonts.com) build (Monaspace Neon's installs as
-**MonaspiceNe Nerd Font**).
+you can reapply your fonts afterward. Wiffletree themes carry fonts, so
+that port suggests the website's Figtree and JetBrains Mono; Wiffletree
+falls back to the system fonts when they aren't installed. Other ports
+leave fonts alone. The screenshots use
+[Monaspace Neon](https://monaspace.githubnext.com). The oh-my-posh port
+needs Nerd Font symbols: Ghostty has them built in; elsewhere use any
+[Nerd Font](https://www.nerdfonts.com) build (Monaspace Neon's installs
+as **MonaspiceNe Nerd Font**).
 
 ## Palette
 
