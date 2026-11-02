@@ -18,6 +18,8 @@ matches broken output — so this parses every artifact for real:
   nvim         lua palette module: every expected role present, values hex,
                appearance dark/light
   slack        four comma-separated hex colors for the current custom theme controls
+  wiffletree   parses; version 1, name, fonts (size 11-20), one variant (light for
+               sky, else dark) with exactly the 14 keys, values are hexes
   oh-my-posh   TOML parses; palette values are named ANSI slots; NO hex
                anywhere in the file (the follow-the-terminal contract)
   svg cards    XML parses
@@ -180,6 +182,33 @@ def lint_termic(slug):
     if missing: err(path, f'terminal block missing: {missing}')
 
 
+WIFFLETREE_KEYS = ['base', 'surface', 'overlay', 'text', 'subtle', 'edge', 'accent',
+                   'on-accent', 'focus', 'green', 'red', 'yellow', 'blue', 'magenta']
+
+
+def lint_wiffletree(slug):
+    path, raw = read('ports', 'wiffletree', f'{slug}.json')
+    if raw is None: return
+    try:
+        d = json.loads(raw)
+    except Exception as e:
+        return err(path, f'does not parse: {e}')
+    if d.get('version') != 1: err(path, f"version is {d.get('version')!r}")
+    if d.get('name') != slug.replace('-', ' ').title(): err(path, f"name is {d.get('name')!r}")
+    f = d.get('fonts', {})
+    if sorted(f) != ['mono', 'size', 'ui']: err(path, 'fonts keys != ui, mono, size')
+    elif not (isinstance(f['ui'], str) and isinstance(f['mono'], str)
+              and type(f['size']) is int and 11 <= f['size'] <= 20):
+        err(path, f'bad fonts: {f}')
+    side = 'light' if slug == 'celadon-sky' else 'dark'
+    variants = d.get('variants', {})
+    if list(variants) != [side]: err(path, f'variants are {list(variants)}, want [{side!r}]')
+    for name, v in variants.items():
+        if sorted(v) != sorted(WIFFLETREE_KEYS): err(path, f'{name}: keys != the 14 expected')
+        bad = [f'{k}={x!r}' for k, x in v.items() if not HEX.match(str(x))]
+        if bad: err(path, f'{name}: non-hex values: {bad}')
+
+
 ANSI8 = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
 
@@ -302,10 +331,10 @@ if __name__ == '__main__':
         lint_claude(slug); lint_termic(slug); lint_svg(slug)
         lint_codex(slug); lint_codex_cli(slug)
         lint_alacritty(slug); lint_kitty(slug); lint_wezterm(slug); lint_wt(slug)
-        lint_nvim(slug); lint_slack(slug)
+        lint_nvim(slug); lint_slack(slug); lint_wiffletree(slug)
     lint_omp()
     for e in errors: print('FAIL', e)
-    n = 14*len(SLUGS) + 1
+    n = 15*len(SLUGS) + 1
     print(f'{n - len(errors)}/{n} artifacts clean' if not errors
           else f'{len(errors)} problem(s)')
     sys.exit(1 if errors else 0)

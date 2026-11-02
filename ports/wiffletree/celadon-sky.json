@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "name": "Celadon Sky",
+  "fonts": {
+    "ui": "Figtree",
+    "mono": "JetBrains Mono",
+    "size": 14
+  },
+  "variants": {
+    "light": {
+      "base": "#eaf6e8",
+      "surface": "#deedda",
+      "overlay": "#cee1ca",
+      "text": "#3b423a",
+      "subtle": "#5d675b",
+      "edge": "#7a8378",
+      "accent": "#874576",
+      "on-accent": "#eaf6e8",
+      "focus": "#1c7472",
+      "green": "#40783b",
+      "red": "#9b4a43",
+      "yellow": "#9c7220",
+      "blue": "#246099",
+      "magenta": "#874576"
+    }
+  }
+}

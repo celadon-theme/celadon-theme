@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "name": "Celadon",
+  "fonts": {
+    "ui": "Figtree",
+    "mono": "JetBrains Mono",
+    "size": 14
+  },
+  "variants": {
+    "dark": {
+      "base": "#131b11",
+      "surface": "#182216",
+      "overlay": "#232f20",
+      "text": "#c9d5c6",
+      "subtle": "#939f91",
+      "edge": "#727e70",
+      "accent": "#f49cdb",
+      "on-accent": "#131b11",
+      "focus": "#37d8c9",
+      "green": "#9ecf75",
+      "red": "#fba29b",
+      "yellow": "#dcbb50",
+      "blue": "#7cc7fb",
+      "magenta": "#f49cdb"
+    }
+  }
+}

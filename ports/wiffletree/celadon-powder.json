@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "name": "Celadon Powder",
+  "fonts": {
+    "ui": "Figtree",
+    "mono": "JetBrains Mono",
+    "size": 14
+  },
+  "variants": {
+    "dark": {
+      "base": "#232b21",
+      "surface": "#273125",
+      "overlay": "#303c2d",
+      "text": "#b5c1b2",
+      "subtle": "#8b9689",
+      "edge": "#707c6e",
+      "accent": "#e38ccb",
+      "on-accent": "#232b21",
+      "focus": "#14c8b9",
+      "green": "#8fbf65",
+      "red": "#ea928c",
+      "yellow": "#ccab3e",
+      "blue": "#6cb7ea",
+      "magenta": "#e38ccb"
+    }
+  }
+}
