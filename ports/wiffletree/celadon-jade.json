@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "name": "Celadon Jade",
+  "fonts": {
+    "ui": "Figtree",
+    "mono": "JetBrains Mono",
+    "size": 14
+  },
+  "variants": {
+    "dark": {
+      "base": "#060d05",
+      "surface": "#0b150a",
+      "overlay": "#182315",
+      "text": "#dbe7d8",
+      "subtle": "#9ba799",
+      "edge": "#748072",
+      "accent": "#ffaee7",
+      "on-accent": "#060d05",
+      "focus": "#4ce7d8",
+      "green": "#acde83",
+      "red": "#ffb7b0",
+      "yellow": "#ebca60",
+      "blue": "#99d4ff",
+      "magenta": "#ffaee7"
+    }
+  }
+}

@@ -100,6 +100,13 @@ Theme JSON for both, generated like everything else — drop the file in and
 pick it from the app's theme picker:
 [ports/claude-code](ports/claude-code/) · [ports/termic](ports/termic/).
 
+### Wiffletree
+
+Copy theme files into Wiffletree's themes folder and pick them in
+**Settings › Appearance**: [ports/wiffletree](ports/wiffletree/). Sky is the
+light theme, the other three are dark. Needs a Wiffletree version with theme
+files.
+
 ### Slack
 
 Set the four custom theme colors from [ports/slack](ports/slack/).
@@ -130,7 +137,7 @@ ports are one small emitter each, so asking is usually enough.
 
 Celadon does not prescribe a font. Codex desktop imports reset UI and code
 fonts to the app defaults because its share format requires those fields;
-you can reapply your fonts afterward. Other ports leave fonts alone. The screenshots
+you can reapply your fonts afterward. The Wiffletree port sets Figtree and JetBrains Mono; other ports leave fonts alone. The screenshots
 use [Monaspace Neon](https://monaspace.githubnext.com). The oh-my-posh
 port needs Nerd Font symbols: Ghostty has them built in; elsewhere use any
 [Nerd Font](https://www.nerdfonts.com) build (Monaspace Neon's installs as
